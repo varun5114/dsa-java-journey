@@ -5,6 +5,11 @@
 ## 1. DSA Patterns
 Concepts and patterns learned while solving problems.
 
+### Array Pattern 1 — Hash Lookup
+    Used when quick existence checking required.
+    Data Structure: HashMap / HashSet
+    Time Complexity Improvement: O(n²) → O(n)
+
 ---
 
 ## 2. Java Deep Concepts
