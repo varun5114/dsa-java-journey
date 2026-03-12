@@ -1,1 +1,4 @@
 learning git day 1
+
+day-2....
+branching is a isolated plane of development 
