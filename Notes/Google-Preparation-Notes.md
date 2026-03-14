@@ -71,6 +71,21 @@ Two Sum (sorted version)
 ### Pattern: Running Accumulation
     Maintain value while traversing.
 
+
+### Pattern: Sliding Window (Fixed Size)
+
+Used when subarray of size k needed.
+
+Steps:
+1. Compute first window
+2. Move window
+3. Add next
+4. Remove previous
+
+### Pattern: Two Pointer from both ends
+Used when array sorted
+Left and right move toward center
+
 ---
 
 ## 2. Java Deep Concepts

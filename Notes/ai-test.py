@@ -8,6 +8,6 @@ print("min: ",np.min(data))
 def predict(x):
     x=x*2
     return x
-while True:
-    x=int(input("Enter a number: "))
-    print("prediction value: ",predict(x))
+nums=list(map(int,input().split()))
+for n in nums:
+    print("Prediction:",predict(n))
