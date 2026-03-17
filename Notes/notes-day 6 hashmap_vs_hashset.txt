@@ -1,0 +1,135 @@
+----------------------------------hashmap--------------------------------------------------
+
+hashmap time complexity is o(1) as it uses key - value pair 
+
+in worst case scenarios like multiple collisions in the hash map it takes about o(n) as the avg time complexity 
+
+multiple values can be assigned to a single key , however only one unique key is to be present
+
+it allows one null value key,but multiple values for the null value key is allowed
+
+the formula to calculate the hashmap bucket is.......
+
+Basic Structure of HashMap
+Internally, a HashMap is implemented as an array of nodes, where each node stores a key-value pair.
+
+class Node<K, V> {
+      int hash;
+     K key;
+    V value;
+   Node<K, V> next;
+}
+
+hash: the hash code of the key
+key: the key object
+value: the associated value
+next: reference to the next node in case of a collision
+Hashing and Index Calculation
+When a key-value pair is inserted, the hash code of the key is calculated using the hashCode() method, and then an index is derived to find the bucket (array position).
+
+Formula:
+
+index = hashCode(key)  & (n - 1)
+
+Internal Working of put() Method in HashMap
+Inserting First Key-Value Pair
+When we insert a key-value pair into a HashMap using the put() method, the following internal steps occur:
+
+map.put(new Key("vishal"), 20);
+
+Steps:
+
+Calculate the hash code of key "vishal" -> suppose it is 118.
+Calculate the index using the index method -> it becomes 6.
+Create a node object:
+{
+     int hash = 118;
+    Key key = {"vishal"};
+   Integer value = 20;
+  Node next = null;
+}
+
+Since bucket 6 is empty, the node is placed at index 6.
+
+Inserting Second Key-Value Pair
+map.put(new Key("sachin"), 30);
+
+Calculate the hash code of key "sachin" — suppose it is 115.
+Calculate the index using the index method — it becomes 3.
+Create a node object:
+{
+     int hash = 115;
+    Key key = {"sachin"};
+    Integer value = 30;
+    Node next = null;
+}
+
+Since bucket 3 is empty, the node is placed at index 3.
+
+Inserting Third Key-Value Pair (Collision Example)
+map.put(new Key("vaibhav"), 40);
+
+Calculate the hash code of key "vaibhav" -> suppose it is 118.
+Calculate the index using the index method -> it becomes 6.
+Create a node object:
+{
+    int hash = 118;
+   Key key = {"vaibhav"};
+   Integer value = 40;
+   Node next = null;
+}
+
+At index 6, another node already exists -> this causes a collision.
+
+HashMap then checks:
+
+If both keys have the same hashCode() and equals(), replace the existing value.
+Otherwise, link the new node to the existing one via a linked list.
+
+Collision Handling in HashMap
+A collision occurs when two different keys produce the same index in the HashMap.
+To handle this:
+
+Before Java 8: Collisions are managed using a linked list — new nodes are added at the same index, linked via the next reference.
+Since Java 8: If a bucket contains more than 8 nodes, the linked list is converted into a balanced tree (TreeNode) for faster lookup (O(log n) instead of O(n)).
+
+it is faster than the hashset because it uses the key value pair combo
+
+--------------------------------------------------------------------------------HashSet-----------------------------------------------------------------------------------------------
+slower than hashmap
+time complexity is o(n)
+it uses equals() rather than using the key-value pair option
+the storing technique used in hashset is hashmap object while in hashmap its hashing technique
+allows single null value
+prevents duplicate items in the set
+
+
+// predefined HashSet class
+public class HashSet
+{
+    // A HashMap object 
+    private transient HashMap map;
+
+    // A Dummy value(PRESENT) to associate with an Object in the Map
+    private static final Object PRESENT = new Object();
+    
+    // default constructor of HashSet class
+    // It creates a HashMap by calling 
+    // default constructor of HashMap class
+    public HashSet() {
+        map = new HashMap<>();
+    }
+
+    // add method 
+    // it calls put() method on map object
+    // and then compares it's return value with null
+    public boolean add(E e) {
+        return map.put(e, PRESENT)==null;
+    }
+ 
+    // Other methods in Hash Set
+}
+Now as you can see that whenever we create a HashSet, it internally creates a HashMap and if we insert an element into this HashSet using add() method, it actually call put() method on internally created HashMap object with element you have specified as it’s key and constant Object called "PRESENT" as it’s value. So we can say that a Set achieves uniqueness internally through HashMap. Now the whole story comes around how a HashMap and put() method internally works. As we know in a HashMap each key is unique and when we call put(Key, Value) method, it returns the previous value associated with key, or null if there was no mapping for key. So in add() method we check the return value of map.put(key, value) method with null value.
+If map.put(key, value) returns null, then the statement "map.put(e, PRESENT) == null" will return true and element is added to the HashSet(internally HashMap).
+If map.put(key, value) returns old value of the key, then the statement "map.put(e, PRESENT) == null" will return false and element is not added to the HashSet(internally HashMap).
+As LinkedHashSet extends HashSet, so it internally calls constructors of HashSet using super(). Similarly creating an object of TreeSet class internally creates object of Navigable Map as backing map

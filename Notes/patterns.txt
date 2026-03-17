@@ -1,0 +1,103 @@
+Pattern: HashMap
+
+Used when:
+- counting frequency
+- fast lookup needed
+- key → value mapping
+
+Common problems:
+- Two Sum
+- Valid Anagram
+- Majority Element
+- Frequency count
+
+Operations:
+put()
+get()
+containsKey()
+getOrDefault()
+
+Time complexity:
+O(1) average
+
+
+Pattern: HashSet
+
+Used when:
+- need unique elements
+- fast existence check
+- sliding window
+
+Common problems:
+- Contains Duplicate
+- Contains Duplicate II
+- Longest Substring Without Repeating Characters
+
+Operations:
+add()
+remove()
+contains()
+
+Time complexity:
+O(1) average
+
+sliding window needs remove()
+
+Pattern: Two Pointer
+
+Used when:
+- array sorted
+- in-place modification
+- swap elements
+- move elements
+
+Common problems:
+- Move Zeroes
+- Two Sum sorted
+- Squares of sorted array
+- Reverse array
+
+Idea:
+i → scan
+j → position / other end
+
+two pointer!=two loops
+two pointer = two indices
+
+
+Pattern: Sliding Window
+
+Used when:
+- subarray
+- substring
+- fixed size window
+- variable size window
+
+Idea:
+expand window
+shrink window
+use set / map
+
+Common problems:
+- Longest substring without repeat
+- Contains duplicate II
+- Max sum subarray k
+
+add->process->remove->move left
+
+
+Pattern: Kadane
+
+Used when:
+- max subarray sum
+- continuous sum
+- best sum in array
+
+Idea:
+temp += nums[i]
+max = max(max, temp)
+
+if temp < 0
+temp = 0
+
+order matters in kadane

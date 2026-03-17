@@ -1,0 +1,7 @@
+hashset remove() in sliding window...
+
+the main aim of the sliding window is to add / delete elements in a specific span of a width known as window ...
+it is used to find the unique elements of longest sub array with non repeating char/int or longest sum in a sub array etc
+the thing is in order to find the elements or to traverse the path the avg timecomplexity of hashset is o(n) how ever the use of loops is way higher o(n^2) and for the hashset the space comp is o(k) if the k element is given in the question
+
+the role of remove function is that until there is no false condition in adding the elements in the set the normal add() takes place ..once the add() fails the remove function starts .....it continues until the specific element in the set is removed hence it is placed in the while loop until the condition satisfies.......finally return the sum or the number of elements that is calculated while in the process of adding    
