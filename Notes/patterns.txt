@@ -83,6 +83,12 @@ Common problems:
 - Contains duplicate II
 - Max sum subarray k
 
+Common sliding window mistakes
+1. forgetting remove
+2. wrong index
+3. wrong order
+4. infinite window
+
 add->process->remove->move left
 
 
