@@ -86,6 +86,83 @@ Steps:
 Used when array sorted
 Left and right move toward center
 
+### PREFIX / SUFFIX PATTERNS
+Pattern: Prefix Sum
+
+Used when:
+- need sum of subarray
+- need fast range sum
+- repeated sum queries
+- subarray sum equals k
+
+Idea:
+prefix[i] = sum of elements from 0 to i
+
+sum(l, r) =
+prefix[r] - prefix[l-1]
+
+Common problems:
+- Subarray Sum Equals K
+- Range sum queries
+- Continuous subarray problems
+
+Often used with:
+HashMap
+
+Prefix + HashMap → find previous sum quickly
+
+Pattern: Suffix
+
+Used when:
+- need values from right side
+- need product except self
+- need future values
+
+Idea:
+suffix[i] = result from i to end
+
+Used with prefix to avoid extra loops
+
+Common problems:
+- Product of Array Except Self
+- Trapping Rain Water (later)
+- prefix + suffix problems
+
+Prefix + Suffix → avoid division / nested loops
+
+
+Pattern: Prefix + HashMap
+
+Used when:
+- subarray sum = k
+- need count of subarrays
+- need previous sums
+
+Idea:
+currentSum += nums[i]
+
+if (currentSum - k) exists in map
+→ subarray found
+
+Store:
+map.put(sum, count)
+
+Common problems:
+- Subarray Sum Equals K
+- Continuous subarray sum
+- Count subarrays with sum
+
+Always put 0 → 1 in map at start
+eg:-map.put(0,1)
+
+Common mistakes in prefix problems
+
+- forgetting map.put(0,1)
+- wrong order of update
+- using i-1 incorrectly
+- overflow sum
+- not checking before adding
+
 ---
 
 ## 2. Java Deep Concepts
