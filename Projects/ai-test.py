@@ -9,10 +9,13 @@ print("min: ",np.min(data))
 def predict(x):
     x=x*2
     return x
-
+nums=[]
 with open("numbers.txt","r") as files:
-    data=files.read()
-    nums=list(map(float,data.split()))
-    print (nums)
-    for n in nums:
-        print(f"predicted {n} for:",predict(n))
+    for line in files:
+        nums.extend(map(float,line.split()))
+print(nums)
+count=0
+for n in nums:
+    count+=1
+    print(f"predicted value: {predict(n)}")
+
