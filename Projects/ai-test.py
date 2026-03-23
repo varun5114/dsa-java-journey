@@ -6,16 +6,16 @@ print("mean: ",np.mean(data))
 print("median: ",np.median(data))
 print("min: ",np.min(data))
 
-def predict(x):
-    x=x*2
-    return x
-nums=[]
-with open("numbers.txt","r") as files:
-    for line in files:
-        nums.extend(map(float,line.split()))
-print(nums)
 count=0
+nums=[]
+def cal(n):
+    return n*n 
+
+with open("numbers.txt","r")as f:
+    for line in f:
+        nums.extend(map(float,line.split()))
+
 for n in nums:
     count+=1
-    print(f"predicted value: {predict(n)}")
+    print("calculated value: ",cal(n))
 
