@@ -76,11 +76,22 @@ Two Sum (sorted version)
 
 Used when subarray of size k needed.
 
+Sliding window used for:
+substring
+subarray
+k size window
+unique elements
+
 Steps:
-1. Compute first window
-2. Move window
-3. Add next
-4. Remove previous
+add element
+check condition
+shrink window
+update result
+
+Common mistakes:
+i-k-1 error
+remove wrong element
+wrong order
 
 ### Pattern: Two Pointer from both ends
 Used when array sorted
