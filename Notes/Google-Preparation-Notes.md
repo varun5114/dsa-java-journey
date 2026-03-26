@@ -174,6 +174,35 @@ Common mistakes in prefix problems
 - overflow sum
 - not checking before adding
 
+### Binary search Pattern
+
+Used when sorted
+low high mid
+while <=
+
+mistakes:
+low < high
+wrong mid
+infinite loop
+
+### stack Pattern
+
+LIFO
+push pop peek
+
+used for:
+parentheses
+undo
+reverse
+next greater
+
+# common mistakes made
+
+index error
+map.put missing
+wrong shrink
+wrong mid
+
 ---
 
 ## 2. Java Deep Concepts
