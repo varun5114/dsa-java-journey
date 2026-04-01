@@ -185,6 +185,11 @@ low < high
 wrong mid
 infinite loop
 
+### Binary search variations
+first occurrence
+last occurrence
+insert position
+
 ### stack Pattern
 
 LIFO
@@ -202,6 +207,9 @@ index error
 map.put missing
 wrong shrink
 wrong mid
+prefix confusion
+boundary error
+wrong shrink
 
 ---
 
