@@ -4,6 +4,7 @@ greater_count = 0
 smaller_count = 0
 even_count=0
 odd_count=0
+total_count=0
 
 data = np.array([1,2,3,4,5])
 
@@ -14,6 +15,7 @@ print("median:", np.median(data))
 print("min:", np.min(data))
 
 for i in data:
+    total_count+=1
     if mean_val < i:
         greater_count += 1
     elif mean_val > i:
