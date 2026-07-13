@@ -25,6 +25,24 @@ Two Sum
 Valid Anagram
 Contains Duplicate
 
+### HashSet
+1. used for Fast lookup
+2. unique Elements
+3. duplicate deletion
+
+### Running Minimum pattern
+1. used to track minimum so far
+2. calculate profit
+3. update maximum profit
+
+### Queue operations
+
+enqueue
+dequeue
+peek
+LIFO
+
+
 ### Pattern: Kadane’s Algorithm (Maximum Subarray)
 
 When to use:
@@ -210,6 +228,9 @@ wrong mid
 prefix confusion
 boundary error
 wrong shrink
+using hashmap instead of hashset
+wrong binary search boundary
+queue front/reat confusion
 
 ---
 

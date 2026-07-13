@@ -1,0 +1,19 @@
+#virtual environment
+venv/
+
+# python cache
+__pycache__/
+*.pyc
+
+# Datasets(too large for github)
+train.csv
+test.csv
+test_labels.csv
+sample_submission.csv
+
+#trained model artifacts
+*.joblib
+
+#OS junk
+.DS_Store
+Thumbs.db
