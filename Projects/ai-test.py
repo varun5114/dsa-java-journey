@@ -25,6 +25,16 @@ nums = []
 def cal(n):
     return n*n + 1
 
+__max__=max(nums)
+__min__=min(nums)
+max_count=0
+min_count=0
+for n in nums:
+    if(n==__max__):
+        max_count+=1
+    elif(n==__min__):
+        min_count+=1
+
 
 with open("numbers.txt","r") as f:
     for line in f:
@@ -51,3 +61,12 @@ print("Standard Deviation:",np.std(nums))
 for n in nums:
     if n > np.median(nums):
         print("Number above median:", n)
+
+print("Max value freq:",max_count)
+print("min value freq:",min_count)
+nums.sort()
+print("sorted numbers:",nums)
+nums.sort(reverse=True)
+print("desc order numbers:",nums)
+print("range:",__max__-__min__)
+    

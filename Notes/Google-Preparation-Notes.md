@@ -89,6 +89,28 @@ Two Sum (sorted version)
 ### Pattern: Running Accumulation
     Maintain value while traversing.
 
+### Linked list
+
+Node 
+head
+tail
+next
+
+### reverse linked list
+prev
+current
+next
+
+### fast and slow pointer
+
+slow+=1
+fast+=2
+
+### stack Notes
+
+Monotonic stack
+next greater element
+
 
 ### Pattern: Sliding Window (Fixed Size)
 
