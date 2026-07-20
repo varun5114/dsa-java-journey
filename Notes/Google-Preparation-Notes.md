@@ -133,6 +133,21 @@ i-k-1 error
 remove wrong element
 wrong order
 
+### fast & slow pointer 
+middle
+cycle detection (aka floyds cycle detection algorithm)
+
+### reverse linked list
+prev
+current
+next
+
+### linked list cycle
+slow == fast
+
+
+
+
 ### Pattern: Two Pointer from both ends
 Used when array sorted
 Left and right move toward center
@@ -253,6 +268,7 @@ wrong shrink
 using hashmap instead of hashset
 wrong binary search boundary
 queue front/reat confusion
+linked lists(null issues,pointer updates)
 
 ---
 

@@ -5,6 +5,9 @@ smaller_count = 0
 even_count=0
 odd_count=0
 total_count=0
+unique_numbers=set()
+duplicate_numbers=dict()
+highest_freq=0
 
 data = np.array([1,2,3,4,5])
 
@@ -25,6 +28,12 @@ nums = []
 def cal(n):
     return n*n + 1
 
+with open("numbers.txt","r") as f:
+    for line in f:
+        try:
+            nums.extend(map(float, line.split()))
+        except ValueError:
+            print("Invalid number")
 __max__=max(nums)
 __min__=min(nums)
 max_count=0
@@ -34,15 +43,13 @@ for n in nums:
         max_count+=1
     elif(n==__min__):
         min_count+=1
-
-
-with open("numbers.txt","r") as f:
-    for line in f:
-        try:
-            nums.extend(map(float, line.split()))
-        except ValueError:
-            print("Invalid number")
-
+for n in nums:
+    unique_numbers.add(n)
+for n in nums:
+    if n in duplicate_numbers:
+        duplicate_numbers[n]+=1
+    else:
+        duplicate_numbers[n]=1
 print("Process success")
 print("Total numbers:", len(nums))
 
@@ -69,4 +76,22 @@ print("sorted numbers:",nums)
 nums.sort(reverse=True)
 print("desc order numbers:",nums)
 print("range:",__max__-__min__)
+print(unique_numbers)
+for key,value in duplicate_numbers.items():
+    try:
+        if value>1:
+            print(value)
+        else:
+            raise ValueError
+    except ValueError:
+        print("there are no duplicate values!")
+        
+    
+    if value>highest_freq:
+        highest_freq=value
+high_freq_numbers=[]
+for key,value in duplicate_numbers.items():
+    if value==highest_freq:
+        high_freq_numbers.extend([key])
+print(high_freq_numbers)
     
