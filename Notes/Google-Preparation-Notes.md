@@ -256,6 +256,24 @@ undo
 reverse
 next greater
 
+### Tree Basics
+root
+leaf
+height
+depth
+
+### Maximum depth
+max(left,right)+1
+
+### Same tree
+compare values
+compare left
+compare right
+
+### queue notes
+FIFO
+implementation tricks(im comfortable with DFS now)
+
 # common mistakes made
 
 index error
