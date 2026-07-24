@@ -23,21 +23,27 @@ for i in data:
         even_count+=1
     else: odd_count+=1
 
-nums = []
 
 def cal(n):
     return n*n + 1
 
-with open("numbers.txt","r") as f:
-    for line in f:
-        try:
-            nums.extend(map(float, line.split()))
-        except ValueError:
-            print("Invalid number")
+def read_file():
+    numbers=[]
+    with open("numbers.txt","r") as f:
+        for line in f:
+            try:
+                numbers.extend(map(float, line.split()))
+            except ValueError:
+                print("Invalid number")
+    return numbers
+
+nums = read_file()
+
 __max__=max(nums)
 __min__=min(nums)
 max_count=0
 min_count=0
+
 for n in nums:
     if(n==__max__):
         max_count+=1
@@ -45,45 +51,53 @@ for n in nums:
         min_count+=1
 for n in nums:
     unique_numbers.add(n)
-for n in nums:
-    if n in duplicate_numbers:
-        duplicate_numbers[n]+=1
-    else:
-        duplicate_numbers[n]=1
 
-number_above_median=[]
-for n in nums:
-    if n > np.median(nums):
-        number_above_median.append(n)
-
-
-duplicate_numbers_list=[]
-for key,value in duplicate_numbers.items():
-    try:
-        if value>1:
-            duplicate_numbers_list.append(key)
+def find_duplicates(nums):
+    for n in nums:
+        if n in duplicate_numbers:
+            duplicate_numbers[n]+=1
         else:
-            raise ValueError
-    except ValueError:
-        continue
-        
-    
-    if value>highest_freq:
-        highest_freq=value
-high_freq_numbers=[]
-for key,value in duplicate_numbers.items():
-    if value==highest_freq:
-        high_freq_numbers.extend([key])
+            duplicate_numbers[n]=1
+    duplicate_numbers_list=[]
+    for key,value in duplicate_numbers.items():
+        try:
+            if value>1:
+                duplicate_numbers_list.append(key)
+            else:
+                raise ValueError
+        except ValueError:
+            continue
+        if value>highest_freq:
+                highest_freq=value
+    return duplicate_numbers_list
 
-count_above_mean=0
-for n in nums:
-    if n >mean_val:
-        count_above_mean+=1
+duplicate_numbers_list=find_duplicates(nums)
 
-count_below_mean=0
-for n in nums:
-    if n< mean_val:
-        count_below_mean+=1
+def calculate_statistics(nums):
+    number_above_median=[]
+    for n in nums:
+        if n > np.median(nums):
+            number_above_median.append(n)
+
+    high_freq_numbers=[]
+    for key,value in duplicate_numbers.items():
+        if value==highest_freq:
+            high_freq_numbers.extend([key])
+
+    count_above_mean=0
+    for n in nums:
+        if n >mean_val:
+            count_above_mean+=1
+
+    count_below_mean=0
+    for n in nums:
+        if n< mean_val:
+            count_below_mean+=1
+    return number_above_median,high_freq_numbers,count_above_mean,count_below_mean
+
+
+number_above_median,high_freq_numbers,count_above_mean,count_below_mean=calculate_statistics(nums)
+
 
 def generate_report(nums,mean_val,data,greater_count,smaller_count,even_count,odd_count,number_above_median,max_count,min_count,__max__,__min__,unique_numbers,high_freq_numbers,count_above_mean,count_below_mean,duplicate_numbers_list):
     print("Process success")

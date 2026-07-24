@@ -274,6 +274,29 @@ compare right
 FIFO
 implementation tricks(im comfortable with DFS now)
 
+
+### Recursion 
+Base case
+Recursive call
+
+### DFS
+root
+left
+right
+
+### Trees
+root
+leaf
+height
+depth
+
+ 1. Maximum Depth:
+    return 1+Math.max(maxDepth(root.left),maxDepth(root.right))
+ 2. Same tree:
+    compare root,left,right
+ 3. Invert Tree:
+    use temp node and interchange the values of root.left and root.right
+
 # common mistakes made
 
 index error
