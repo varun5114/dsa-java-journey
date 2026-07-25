@@ -111,6 +111,8 @@ fast+=2
 Monotonic stack
 next greater element
 
+LIFO
+
 
 ### Pattern: Sliding Window (Fixed Size)
 
@@ -235,6 +237,8 @@ Used when sorted
 low high mid
 while <=
 
+mid=left+(right-left)/2
+
 mistakes:
 low < high
 wrong mid
@@ -275,6 +279,7 @@ FIFO
 implementation tricks(im comfortable with DFS now)
 
 
+
 ### Recursion 
 Base case
 Recursive call
@@ -296,6 +301,16 @@ depth
     compare root,left,right
  3. Invert Tree:
     use temp node and interchange the values of root.left and root.right
+
+### HashMap:
+O(1) lookup
+
+
+
+### Strongest pattern
+
+### weakest pattern
+
 
 # common mistakes made
 
