@@ -305,12 +305,30 @@ depth
 ### HashMap:
 O(1) lookup
 
+### prefix sum:
+running cumlative sum
 
+# DFS
+root -> left -> right
+
+### BFS:
+level order traversal using queue
+
+### Balanced binary tree:
+Height difference <=1
+
+### Diameter of binary tree:
+Left height + right Height
 
 ### Strongest pattern
+prefix sum
+valid parenthesis
+two sum
 
 ### weakest pattern
-
+prefix sum
+trees
+recursion
 
 # common mistakes made
 
