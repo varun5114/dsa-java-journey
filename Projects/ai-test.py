@@ -132,6 +132,10 @@ def main():
         print("percentage of count_below_mean is:",(count_below_mean/len(nums))*100)
         print("duplicate numbers are:",duplicate_numbers_list if duplicate_numbers_list else "none")
 
+    def save_report(report):
+        with open("report.txt","w") as f:
+            f.write(report)
+
     generate_report(
         nums,
         mean_val,
