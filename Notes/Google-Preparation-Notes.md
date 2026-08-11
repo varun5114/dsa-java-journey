@@ -320,6 +320,16 @@ Height difference <=1
 ### Diameter of binary tree:
 Left height + right Height
 
+### time coplexities
+linear search-O(n)
+hashMap lookup-O(1)
+binary search- O(log n)
+linked list traversal-O(n)
+tree DFS-O(n)
+tree BFS-O(n)
+
+The time complexity of both Depth-First Search (DFS) and Breadth-First Search (BFS) is O(n) for a tree because they both maintain a visited structure to ensure a spanning tree with no circuits. This means that for each node, either the node itself is visited, or its children are explored. Since each node is visited at least once, the total time complexity is O(n). Additionally, the time complexity is O(V+E) because each node is processed exactly once, and the sum of the sizes of the adjacency lists of all the nodes is E (total number of edges). Therefore, the total time complexity is O(n).
+
 ### Strongest pattern
 prefix sum
 valid parenthesis

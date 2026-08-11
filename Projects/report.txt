@@ -1,0 +1,35 @@
+Process success
+Total numbers: 9
+
+=========Analysis Report=========
+mean: 5.0
+median: 3.0
+min: 1
+greater_count: 4
+smaller_count: 4
+Even count: 4
+odd_count: 5
+calculated value: 2.0
+calculated value: 5.0
+calculated value: 10.0
+calculated value: 17.0
+calculated value: 26.0
+calculated value: 37.0
+calculated value: 50.0
+calculated value: 65.0
+calculated value: 82.0
+Standard Deviation: 2.581988897471611
+numbers above median: [6.0, 7.0, 8.0, 9.0]
+Max value freq: 1
+min value freq: 1
+[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]
+[9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0]
+range: 8.0
+unique numbers are: {1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0}
+[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]
+total count: 9
+largest value9.0
+smallest value1.0
+percentage of count above mean:44.44444444444444
+percentage of count_below_mean is:44.44444444444444
+duplicate numbers are:none
