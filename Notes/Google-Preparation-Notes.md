@@ -330,6 +330,93 @@ tree BFS-O(n)
 
 The time complexity of both Depth-First Search (DFS) and Breadth-First Search (BFS) is O(n) for a tree because they both maintain a visited structure to ensure a spanning tree with no circuits. This means that for each node, either the node itself is visited, or its children are explored. Since each node is visited at least once, the total time complexity is O(n). Additionally, the time complexity is O(V+E) because each node is processed exactly once, and the sum of the sizes of the adjacency lists of all the nodes is E (total number of edges). Therefore, the total time complexity is O(n).
 
+# for(int i = 0; i < n; i++) {
+#    System.out.println(i);
+# }     
+The loop executes n times → O(n) time.
+
+But we're not creating an array, HashMap, list, etc. that grows with n.
+
+So:
+
+Time  = O(n)
+Space = O(1)
+
+# for(int i = 0; i < n; i++) {
+#  for(int j = 0; j < n; j++) {
+#       System.out.println(i + j);
+#   }
+# }
+Why O(n²)?
+
+for(i = 0; i < n; i++) {       // n times
+    for(j = 0; j < n; j++) {   // n times
+    }
+}
+
+So:
+
+n × n = n²
+
+But again, we're not storing n² elements anywhere.
+
+Therefore space is O(1).
+
+# while(left <= right) {
+#  int mid = (left + right) / 2;
+#   ...
+# }
+Every iteration reduces the search space approximately by half:
+
+n
+↓
+n/2
+↓
+n/4
+↓
+n/8
+...
+
+Therefore:
+
+Time = O(log n)
+
+But you're only storing:
+
+left
+right
+mid
+
+That's a fixed number of variables.
+
+Therefore:
+
+Space = O(1)
+
+# for(int i = 0; i < n; i++) {
+#  map.put(nums[i], i);
+# }
+Because we're looping through every element, we perform n insertions.
+
+Therefore:
+
+Time  = O(n)
+Space = O(n)
+
+Your space complexity is correct. ✅
+
+Your explanation:
+
+"the lookup is faster but the storage consumes space of n"
+
+The storage part is right.
+
+But this isn't really a lookup operation—we are building/populating the HashMap.
+
+So the for loop itself makes the time O(n).
+
+
+
 ### Strongest pattern
 prefix sum
 valid parenthesis

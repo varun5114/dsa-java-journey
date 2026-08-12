@@ -137,8 +137,6 @@ def save_report(nums,total_count,mean_val,data,greater_count,smaller_count,even_
 def main():    
 
     unique_numbers=set()
-    
-    highest_freq=0
     max_count=0
     min_count=0
 
