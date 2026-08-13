@@ -415,6 +415,111 @@ But this isn't really a lookup operation—we are building/populating the HashMa
 
 So the for loop itself makes the time O(n).
 
+* Loops affect time; data structures/allocations affect space.
+
+### int sum = 0;
+# for(int i = 0; i < n; i++) {
+#  sum += nums[i];
+# }
+Time  → O(n)
+Space → O(1)
+
+Your reasoning is correct.
+
+Even though sum changes n times, it is still one variable, not n variables.
+
+A useful distinction:
+
+Changing a variable repeatedly does not increase space complexity.
+
+# int[] copy = new int[n];
+# for(int i = 0; i < n; i++) {
+#  copy[i] = nums[i];
+# }
+Time  → O(n)
+Space → O(n)
+
+Because:
+
+int[] copy = new int[n];
+
+allocates an array capable of holding n elements.
+
+# HashSet<Integer> set = new HashSet<>();
+
+# for(int n : nums) {
+#  set.add(n);
+# }
+Time  → O(n)
+Space → O(n)
+
+Your observation about the worst case is important.
+
+For example:
+
+nums = [1,2,3,4,5]
+
+The HashSet stores 5 elements:
+
+Space = O(n)
+
+But:
+
+nums = [1,1,1,1,1]
+
+The HashSet stores only:
+
+{1}
+
+So actual space could be smaller.
+
+But Big-O asks us to describe the worst-case growth, therefore:
+
+O(n)
+
+# for(int i = 0; i < n; i++) {
+#  for(int j = 0; j < n; j++) {
+#       System.out.println(i + j);
+#   }
+# }
+Time  → O(n²)
+Space → O(1)
+
+Your reasoning is basically right.
+
+One small improvement:
+
+Don't say:
+
+"because it executes 2 loops of n"
+
+because that could make you think two loops always mean O(n²).
+
+The important thing is that the loops are nested:
+
+for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+        ...
+    }
+}
+
+The inner loop executes n times for every iteration of the outer loop:
+
+n × n = n²
+
+That's why it's O(n²).
+
+If the loops were sequential:
+
+for (...) { }   // n
+
+for (...) { }   // n
+
+then:
+
+O(n) + O(n) = O(n)
+
+not O(n²).
 
 
 ### Strongest pattern

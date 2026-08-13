@@ -73,13 +73,13 @@ def calculate_statistics(nums,duplicate_numbers,highest_freq,mean_val):
 def cal(n):
     return n*n + 1
 
-def generate_report(nums,total_count,mean_val,data,greater_count,smaller_count,even_count,odd_count,number_above_median,max_count,min_count,__max__,__min__,unique_numbers,high_freq_numbers,count_above_mean,count_below_mean,duplicate_numbers_list):
+def generate_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,number_above_median,max_count,min_count,__max__,__min__,unique_numbers,high_freq_numbers,count_above_mean,count_below_mean,duplicate_numbers_list):
     print("Process success")
     print("Total numbers:", len(nums))
     print("\n=========Analysis Report=========")
     print("mean:", mean_val)
-    print("median:", np.median(data))
-    print("min:", np.min(data))
+    print("median:", np.median(nums))
+    print("min:", np.min(nums))
     print("greater_count:", greater_count)
     print("smaller_count:", smaller_count)
     print("Even count: ",even_count)
@@ -103,14 +103,14 @@ def generate_report(nums,total_count,mean_val,data,greater_count,smaller_count,e
     print("percentage of count_below_mean is:",(count_below_mean/len(nums))*100)
     print("duplicate numbers are:",duplicate_numbers_list if duplicate_numbers_list else "none")
 
-def save_report(nums,total_count,mean_val,data,greater_count,smaller_count,even_count,odd_count,number_above_median,max_count,min_count,__max__,__min__,unique_numbers,high_freq_numbers,count_above_mean,count_below_mean,duplicate_numbers_list):
+def save_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,number_above_median,max_count,min_count,__max__,__min__,unique_numbers,high_freq_numbers,count_above_mean,count_below_mean,duplicate_numbers_list):
     with open("report.txt","w") as f:
         f.write("Process success\n")
         f.write("Total numbers: "+str(len(nums))+"\n")
         f.write("\n=========Analysis Report=========\n")
         f.write("mean: "+str(mean_val)+"\n")
-        f.write("median: "+str(np.median(data))+"\n")
-        f.write("min: "+str(np.min(data))+"\n")
+        f.write("median: "+str(np.median(nums))+"\n")
+        f.write("min: "+str(np.min(nums))+"\n")
         f.write("greater_count: "+str(greater_count)+"\n")
         f.write("smaller_count: "+str(smaller_count)+"\n")
         f.write("Even count: "+str(even_count)+"\n")
