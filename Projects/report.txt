@@ -3,8 +3,8 @@ Total numbers: 9
 
 =========Analysis Report=========
 mean: 5.0
-median: 3.0
-min: 1
+median: 5.0
+min: 1.0
 greater_count: 4
 smaller_count: 4
 Even count: 4

@@ -2,12 +2,21 @@ import numpy as np
 
 def read_file():
     numbers=[]
-    with open("numbers.txt","r") as f:
-        for line in f:
-            try:
-                numbers.extend(map(float, line.split()))
-            except ValueError:
-                print("Invalid number")
+    try:
+        with open("numbers.txt","r") as f:
+            for line in f:
+                try:
+                    numbers.extend(map(float, line.split()))
+                except ValueError:
+                    print("Invalid numbers are detected. Please check the file")
+                    exit()
+    except FileNotFoundError:
+        print("File not found. Please create the file")
+        exit()
+
+    if not numbers :
+        print("No valid numbers found in the file.")
+        exit()
     return numbers
 
 def find_duplicates(nums):
@@ -140,7 +149,6 @@ def main():
     max_count=0
     min_count=0
 
-    data = np.array([1,2,3,4,5])
     nums = read_file()
     mean_val = np.mean(nums)
     
@@ -156,7 +164,7 @@ def main():
     duplicate_numbers_list,highest_freq,duplicate_numbers=find_duplicates(nums)
     even_count,odd_count,total_count,greater_count,smaller_count=find_odd_even(nums,mean_val)
     number_above_median,high_freq_numbers,count_above_mean,count_below_mean=calculate_statistics(nums,duplicate_numbers,highest_freq,mean_val)
-    generate_report(nums,total_count,mean_val,data,greater_count,smaller_count,even_count,odd_count,number_above_median,max_count,min_count,__max__,__min__,unique_numbers,high_freq_numbers,count_above_mean,count_below_mean,duplicate_numbers_list)
-    save_report(nums,total_count,mean_val,data,greater_count,smaller_count,even_count,odd_count,number_above_median,max_count,min_count,__max__,__min__,unique_numbers,high_freq_numbers,count_above_mean,count_below_mean,duplicate_numbers_list)
+    generate_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,number_above_median,max_count,min_count,__max__,__min__,unique_numbers,high_freq_numbers,count_above_mean,count_below_mean,duplicate_numbers_list)
+    save_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,number_above_median,max_count,min_count,__max__,__min__,unique_numbers,high_freq_numbers,count_above_mean,count_below_mean,duplicate_numbers_list)
 if __name__=='__main__':
     main()

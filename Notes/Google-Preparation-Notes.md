@@ -521,6 +521,57 @@ O(n) + O(n) = O(n)
 
 not O(n²).
 
+# for(int i = 0; i < n; i++) {
+#  for(int j = i + 1; j < n; j++) {
+#       System.out.println(i + j);
+#   }
+# }
+You wrote:
+
+O(n log n)
+
+* The correct answer is:
+
+* Time  → O(n²)
+* Space → O(1)
+
+The code was:
+
+for(int i = 0; i < n; i++) {
+    for(int j = i + 1; j < n; j++) {
+        System.out.println(i + j);
+    }
+}
+
+The important part is that the loops are nested.
+
+The iterations are approximately:
+
+(n-1) + (n-2) + (n-3) + ... + 1
+
+which gives:
+
+n(n-1)/2
+
+Ignoring constants:
+
+O(n²)
+Why NOT O(n log n)?
+
+O(n log n) usually comes from something like:
+
+binary search performed n times
+divide-and-conquer algorithms
+merge sort
+
+Simply having two nested loops does not always automatically mean O(n²), but here it does because the inner loop runs a linear number of times.
+
+Your space answer is correct:
+
+O(1)
+
+because you're not creating an additional data structure that grows with n.
+
 
 ### Strongest pattern
 prefix sum
