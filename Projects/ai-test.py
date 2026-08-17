@@ -1,22 +1,25 @@
 import numpy as np
+def parse_numbers(line,numbers):
+    for value in line.split():
+        try:
+            numbers.append(float(value))
+        except ValueError:
+            print(f"Invalid number found in the file: {line.strip()}. Skipping this line.")
+    
 
 def read_file():
     numbers=[]
     try:
         with open("numbers.txt","r") as f:
             for line in f:
-                try:
-                    numbers.extend(map(float, line.split()))
-                except ValueError:
-                    print("Invalid numbers are detected. Please check the file")
-                    exit()
+                parse_numbers(line,numbers)
     except FileNotFoundError:
         print("File not found. Please create the file")
-        exit()
+        return[]
 
     if not numbers :
         print("No valid numbers found in the file.")
-        exit()
+        return[]
     return numbers
 
 def find_duplicates(nums):

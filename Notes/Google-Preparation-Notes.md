@@ -572,6 +572,135 @@ O(1)
 
 because you're not creating an additional data structure that grows with n.
 
+# for(int i = 0; i < n; i++) {
+#  int j = i;
+#   while(j < n) {
+#       j++;
+#   }
+# }
+You wrote:
+
+O(n log n), O(1)
+The inner loop does not halve anything.
+
+For each i:
+
+i = 0 → n iterations
+i = 1 → n-1 iterations
+i = 2 → n-2 iterations
+...
+i = n-1 → 1 iteration
+
+Total:
+
+n + (n-1) + (n-2) + ... + 1
+
+This is:
+
+n(n+1)/2
+
+Therefore:
+
+Time  → O(n²)
+Space → O(1) ✅
+Key lesson
+
+A loop becoming shorter on every outer iteration doesn't mean O(n log n).
+
+You need to ask:
+
+Is the problem size being divided by a constant factor?
+
+Here, no. We're subtracting roughly one each time.
+
+# int i = 0;
+# while(i < n) {
+#  i = i * 2 + 1;
+# }
+You wrote:
+
+O(n log n), O(n log n)
+
+❌ Both are wrong.
+
+Code:
+
+int i = 0;
+
+
+while(i < n) {
+    i = i * 2 + 1;
+}
+
+Look at what happens:
+
+i = 0
+i = 1
+i = 3
+i = 7
+i = 15
+i = 31
+...
+
+The value of i approximately doubles every iteration.
+
+Therefore the number of iterations is:
+
+log₂(n)
+
+So:
+
+Time → O(log n)
+
+And what are we storing?
+
+Only:
+
+i
+
+One variable.
+
+Therefore:
+
+Space → O(1)
+Correct answer:
+Time  → O(log n)
+Space → O(1)
+
+Your mistake here is particularly important:
+
+O(log n) time does NOT automatically mean O(log n) space.
+
+Space depends on what you're storing, not how many iterations happen.
+
+# for(int i = 0; i < n; i++) {
+#  for(int j = 0; j < 10; j++) {
+#       System.out.println(i + j);
+#   }
+# }
+You wrote:
+
+O(n*1), O(1)
+
+✅ Correct.
+
+Simplify:
+
+O(n × 1)
+= O(n)
+
+The inner loop runs exactly 10 times, regardless of how large n becomes.
+
+Therefore:
+
+Time  → O(n)
+Space → O(1)
+
+This is a good example of why:
+
+Two nested loops ≠ automatically O(n²).
+
+The inner loop has a constant bound.
 
 ### Strongest pattern
 prefix sum
