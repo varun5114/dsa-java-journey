@@ -4,7 +4,7 @@ def parse_numbers(line,numbers):
         try:
             numbers.append(float(value))
         except ValueError:
-            print(f"Invalid number found in the file: {line.strip()}. Skipping this line.")
+            print(f"Invalid number found in the file: {value}. Skipping this element.")
     
 
 def read_file():
@@ -12,7 +12,10 @@ def read_file():
     try:
         with open("numbers.txt","r") as f:
             for line in f:
-                parse_numbers(line,numbers)
+                try:
+                    parse_numbers(line,numbers)
+                except ValueError as e:
+                        print (e)
     except FileNotFoundError:
         print("File not found. Please create the file")
         return[]

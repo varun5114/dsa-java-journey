@@ -702,6 +702,76 @@ Two nested loops ≠ automatically O(n²).
 
 The inner loop has a constant bound.
 
+# for(int i = 1; i < n; i *= 2) {
+#  System.out.println(i);
+# }
+
+You gave:
+
+O(n*(n+1)/2), O(1)
+
+✅ Your reasoning is correct, but in an interview/LeetCode answer, simplify it to:
+
+Time  → O(n²)
+Space → O(1)
+
+Because:
+
+2
+n(n+1)
+	​
+
+=
+2
+n
+2
++n
+	​
+
+
+We ignore constants and lower-order terms:
+
+O(n²)
+
+So your mathematical understanding is good.
+
+# for(int i = 0; i < n; i++) {
+#  for(int j = 0; j < i; j++) {
+#       System.out.println(i + j);
+#   }
+# }
+
+You said:
+
+"I don't know time but space = O(1)"
+
+❌ Time needs correction.
+
+The code was:
+
+for(int i = 0; i < n; i++) {
+    for(int j = 0; j < i; j++) {
+        System.out.println(i + j);
+    }
+}
+
+The inner loop executes:
+
+0 + 1 + 2 + 3 + ... + (n-1)
+
+That's:
+
+2
+n(n−1)
+	​
+
+
+Therefore:
+
+Time  → O(n²)
+Space → O(1)
+
+So C is the one you need to add to your revision list.
 ### Strongest pattern
 prefix sum
 valid parenthesis
