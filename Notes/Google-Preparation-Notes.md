@@ -772,6 +772,143 @@ Time  → O(n²)
 Space → O(1)
 
 So C is the one you need to add to your revision list.
+
+# int i = 1;
+# while(i < n) {
+#  i *= 3;
+# }
+A — O(log n), O(1) ✅
+
+Correct.
+
+If the loop is:
+
+i *= 3;
+
+then the values grow:
+
+1 → 3 → 9 → 27 → 81 → ...
+
+So it reaches n in logarithmic iterations.
+
+Answer:
+
+Time  = O(log n)
+Space = O(1)
+
+# for(int i = 0; i < n; i++) {
+#  for(int j = 0; j < n; j += 2) {
+#       System.out.println(i + j);
+#   }
+# }
+B — O(n log n), O(1) ❌ Time
+
+You said:
+
+outer = n, inner = approximately half each iteration
+
+The important point is: the inner loop is not halving.
+
+If the code was:
+
+for(int i = 0; i < n; i++) {
+    for(int j = 0; j < n; j += 2) {
+        ...
+    }
+}
+
+The inner loop goes:
+
+0, 2, 4, 6, 8, ...
+
+It is doing approximately n/2 iterations, not log n.
+
+Therefore:
+
+Outer → O(n)
+Inner → O(n/2) = O(n)
+
+
+Total → O(n × n)
+      → O(n²)
+
+Space is indeed:
+
+O(1)
+
+because you're not creating storage proportional to n.
+
+Correct B:
+Time  → O(n²)
+Space → O(1)
+
+A useful rule:
+
+Dividing the number by 2 each iteration → O(log n).
+Adding 2 each iteration → O(n).
+
+This distinction is important for you.
+
+# for(int i = 0; i < n; i++) {
+#  for(int j = i; j < n; j++) {
+#       for(int k = j; k < n; k++) {
+#           System.out.println(i + j + k);
+#       }
+#   }
+# }
+D — Your reasoning is good, but the notation is wrong ❌
+
+You said:
+
+O(n² + 1)
+
+and then you manually tested n = 3 and got:
+
+10 executions
+
+Your manual reasoning is actually useful. 👍
+
+The exact number is:
+
+1+2+3+⋯+n
+
+which is:
+
+2
+n(n+1)
+	​
+
+
+For n = 3:
+
+1+2+3=6
+
+Depending on whether you're counting loop-condition checks as well, you may see a slightly different raw count. But the important part is the growth.
+
+2
+n(n+1)
+	​
+
+=
+2
+n
+2
++n
+	​
+
+
+Drop constants and lower-order terms:
+
+O(n²)
+
+So:
+
+Time  → O(n²)
+Space → O(1)
+
+Your intuition was correct; your final Big-O notation wasn't.
+
+And this is exactly the kind of dependent nested loop where you should derive the summation rather than simply saying "three loops = O(n³)."
 ### Strongest pattern
 prefix sum
 valid parenthesis

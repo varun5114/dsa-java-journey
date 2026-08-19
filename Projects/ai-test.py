@@ -1,10 +1,12 @@
 import numpy as np
-def parse_numbers(line,numbers):
+def parse_numbers(line):
+    numbers=[]
     for value in line.split():
         try:
             numbers.append(float(value))
         except ValueError:
             print(f"Invalid number found in the file: {value}. Skipping this element.")
+    return numbers
     
 
 def read_file():
@@ -12,10 +14,8 @@ def read_file():
     try:
         with open("numbers.txt","r") as f:
             for line in f:
-                try:
-                    parse_numbers(line,numbers)
-                except ValueError as e:
-                        print (e)
+                elements=parse_numbers(line)
+                numbers.extend(elements)          
     except FileNotFoundError:
         print("File not found. Please create the file")
         return[]
