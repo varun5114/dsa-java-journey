@@ -909,6 +909,106 @@ Space → O(1)
 Your intuition was correct; your final Big-O notation wasn't.
 
 And this is exactly the kind of dependent nested loop where you should derive the summation rather than simply saying "three loops = O(n³)."
+
+# for(int i = 0; i < n; i++) {
+#  for(int j = 0; j < n; j += 3) {
+#       System.out.println(i + j);
+#   }
+# }
+You wrote:
+
+O(n²), O(1)
+
+Correct.
+
+for (i = 0; i < n; i++)          // n
+    for (j = 0; j < n; j += 3)   // n/3
+
+The +3 does not make it logarithmic. It is still proportional to n.
+
+n×n/3	​= n^2/3	​
+
+
+Drop the constant:
+
+Time = O(n²)
+Space = O(1)
+
+Your reasoning here is good.
+
+# for(int i = 1; i < n; i *= 2) {
+#  for(int j = 0; j < i; j++) {
+#       System.out.println(i + j);
+#   }
+# }
+You said:
+
+O(log n * n)
+
+This is not correct.
+
+The code was:
+
+for(int i = 1; i < n; i *= 2) {
+    for(int j = 0; j < i; j++) {
+        System.out.println(i + j);
+    }
+}
+
+You correctly identified:
+
+Outer loop → O(log n)
+
+But the mistake is here:
+
+"inner loop runs for a total of n number of times"
+
+It doesn't run n times for every outer iteration.
+
+Let's actually trace it.
+
+Suppose:
+
+n = 16
+
+The outer loop gives:
+
+i = 1  → inner runs 1 time
+i = 2  → inner runs 2 times
+i = 4  → inner runs 4 times
+i = 8  → inner runs 8 times
+
+So total:
+
+1 + 2 + 4 + 8
+= 15
+
+That's O(n), not O(n log n).
+
+This is a geometric series.
+
+Therefore:
+
+D = O(n), O(1)
+
+This is a VERY important pattern for you:
+
+Outer:  i *= 2
+Inner:  j < i
+
+Do not automatically do:
+
+O(log n) × O(n)
+
+because the inner loop isn't n every time.
+
+Instead:
+
+1 + 2 + 4 + 8 + ... + n
+
+which is:
+
+O(n)
 ### Strongest pattern
 prefix sum
 valid parenthesis

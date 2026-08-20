@@ -1,4 +1,12 @@
 import numpy as np
+def validate_numbers(numbers):
+    if not numbers:
+        print("no valid numbers are present in the list")
+        return[]
+    
+    print(f"total number of successful parsing elements are :{len(numbers)}")
+    return numbers
+
 def parse_numbers(line):
     numbers=[]
     for value in line.split():
@@ -20,9 +28,7 @@ def read_file():
         print("File not found. Please create the file")
         return[]
 
-    if not numbers :
-        print("No valid numbers found in the file.")
-        return[]
+    numbers=validate_numbers(numbers)
     return numbers
 
 def find_duplicates(nums):
