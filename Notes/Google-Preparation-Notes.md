@@ -1009,6 +1009,103 @@ Instead:
 which is:
 
 O(n)
+
+# for(int i = n; i > 0; i /= 2) {
+#  for(int j = 0; j < i; j++) {
+#       System.out.println(j);
+#   }
+# }
+You wrote:
+
+O(n) because outer loop is log n while inner loop is n
+
+The correct answer is:
+
+Time  = O(n log n)
+Space = O(1)
+
+The important distinction is that the inner loop runs n times for every outer iteration.
+
+So:
+
+Outer → log n
+Inner → n
+
+Total → n × log n
+      → O(n log n)
+
+This is exactly the standard case of a logarithmic outer loop containing a linear inner loop.
+
+Your mistake
+
+You said:
+
+"so it's a n time iterator"
+
+You essentially discarded the outer log n work instead of multiplying it.
+
+Remember:
+
+O(log n) outer
+×
+O(n) inner
+=
+O(n log n)
+
+unless the inner loop's workload depends on the outer variable.
+
+That's the distinction we have been practicing.
+
+# for(int i = 0; i < n; i++) {
+#  for(int j = 0; j < n; j += 2) {
+#       for(int k = 0; k < 5; k++) {
+#           System.out.println(i + j + k);
+#       }
+#   }
+# }
+
+You wrote:
+
+O(n²)
+
+The correct answer is:
+
+Time = O(n)
+Space = O(1)
+
+The code was:
+
+for(int i = 0; i < n; i++) {
+    for(int j = 0; j < n; j += 2) {
+        for(int k = 0; k < 5; k++) {
+            System.out.println(i + j + k);
+        }
+    }
+}
+
+Let's break it down:
+
+Outer loop       → n
+Middle loop      → n/2
+Inner loop       → 5
+
+Therefore:
+
+n×n/2x 5=5n^2/2	​​
+
+
+Therefore:
+
+Time = O(n²)
+
+So actually, your D answer is correct. I want to correct my initial assessment here: the fixed 5 is a constant, but the middle loop still runs proportional to n.
+
+And your reasoning:
+
+"inner most loop executes a fixed number of times"
+
+is correct, but that doesn't make the entire nested structure O(n) because the middle loop is still O(n).
+
 ### Strongest pattern
 prefix sum
 valid parenthesis

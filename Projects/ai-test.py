@@ -71,14 +71,15 @@ def find_odd_even(nums,mean_val):
 
 def calculate_statistics(nums,duplicate_numbers,highest_freq,mean_val):
     number_above_median=[]
+    median_value=np.median(nums)
     for n in nums:
-        if n > np.median(nums):
+        if n > median_value:
             number_above_median.append(n)
 
     high_freq_numbers=[]
     for key,value in duplicate_numbers.items():
         if value==highest_freq:
-            high_freq_numbers.extend([key])
+            high_freq_numbers.append(key)
 
     count_above_mean=0
     for n in nums:
@@ -162,6 +163,8 @@ def main():
     min_count=0
 
     nums = read_file()
+    if not nums:
+        return
     mean_val = np.mean(nums)
     
     for n in nums:
