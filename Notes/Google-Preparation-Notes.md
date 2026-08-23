@@ -1106,6 +1106,149 @@ And your reasoning:
 
 is correct, but that doesn't make the entire nested structure O(n) because the middle loop is still O(n).
 
+# for(int i = 1; i < n; i *= 2) {
+#  for(int j = 0; j < n; j++) {
+#       System.out.println(i + j);
+#   }
+# }
+You answered:
+
+O(n log n), space O(1)
+
+Correct.
+
+The outer loop:
+
+for(int i = 1; i < n; i *= 2)
+
+runs O(log n) times.
+
+The inner loop runs O(n) each time.
+
+Therefore:
+
+O(logn)×O(n)=O(nlogn)
+
+And you're only printing, so auxiliary space is O(1)
+
+# for(int i = 0; i < n; i++) {
+#  for(int j = 0; j < i; j++) {
+#       System.out.println(i + j);
+#   }
+# }
+
+You answered:
+
+O(n²), O(1)
+
+Correct.
+
+Even though the inner loop runs approximately n/2, we get:
+
+n x n/2	​=n^2/2​
+
+
+Ignore the constant:
+
+O(n^2)
+
+Your reasoning here is good. Nested linear loops generally produce quadratic complexity when the inner loop is proportional to n
+
+# for(int i = 1; i < n; i *= 2) {
+#  for(int j = 1; j < i; j *= 2) {
+#       System.out.println(i + j);
+#   }
+# }
+You answered:
+
+O(n)
+
+This is not correct.
+You correctly recognized:
+
+outer = O(log n)
+
+But the mistake is assuming:
+
+inner ≈ n/2
+
+The inner loop also doubles j:
+
+j = 1
+j = 2
+j = 4
+j = 8
+j = 16
+...
+
+So its number of iterations is logarithmic with respect to i.
+
+For example:
+
+i = 1  → ~0 iterations
+i = 2  → ~1
+i = 4  → ~2
+i = 8  → ~3
+i = 16 → ~4
+...
+
+Therefore, across the outer loop, the total is:
+
+1+2+3+⋯+logn
+
+which is:
+
+O((logn)^2)
+Correct answer:
+
+C → Time: O((log n)²), Space: O(1)
+
+j *= 2 → logarithmic
+j++ → linear
+
+That distinction should become automatic.
+
+# for(int i = 0; i < n; i++) {
+#  for(int j = 0; j < n; j += 2) {
+#       System.out.println(i + j);
+#   }
+# }
+
+Your final answer is correct, but your reasoning needs correction
+
+You answered:
+
+O(n²), O(1)
+
+The answer is correct.
+
+But you said:
+
+inner loop runs approximately n/2
+
+That isn't necessarily the best way to reason about it.
+Outer:
+
+n
+
+Inner:
+
+n/2
+
+Therefore:
+
+n×n2=n^2/2
+
+→ O(n²).
+
+So your answer is correct, but remember:
+
+j += 2
+
+is still linear.
+
+It is NOT logarithmic.
+
 ### Strongest pattern
 prefix sum
 valid parenthesis
