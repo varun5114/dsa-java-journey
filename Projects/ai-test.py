@@ -95,6 +95,16 @@ def calculate_statistics(nums,duplicate_numbers,highest_freq,mean_val):
 def cal(n):
     return n*n + 1
 
+def calculate_basic_statistics(nums):
+    mean=np.mean(nums)
+    median=np.median(nums)
+    minimum=np.min(nums)
+    maximum=np.max(nums)
+    standard_deviation=np.std(nums)
+
+    statistics={"mean":mean,"median":median,"min":minimum,"max":maximum,"standard deviation":standard_deviation}
+    return statistics
+
 def generate_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,number_above_median,max_count,min_count,__max__,__min__,unique_numbers,high_freq_numbers,count_above_mean,count_below_mean,duplicate_numbers_list):
     print("Process success")
     print("Total numbers:", len(nums))
@@ -165,6 +175,7 @@ def main():
     nums = read_file()
     if not nums:
         return
+    statistics=calculate_basic_statistics(nums)
     mean_val = np.mean(nums)
     
     for n in nums:
