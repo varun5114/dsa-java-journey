@@ -1249,6 +1249,130 @@ is still linear.
 
 It is NOT logarithmic.
 
+# for (int i = 0; i < n; i++) {
+#   for (int j = 0; j < n; j *= 2) {
+#       System.out.println(i + j);
+#   }
+# }
+
+Look at:
+
+int j = 0;
+j *= 2;
+
+Every iteration:
+
+0 × 2 = 0
+
+So j remains 0 forever.
+
+Therefore:
+
+j < n
+
+remains true for positive n.
+
+Correct conclusion
+
+The inner loop is non-terminating.
+
+So we cannot assign it a normal Big-O time complexity such as O(n), O(log n), etc.
+
+Also, because it never terminates, the outer loop never progresses beyond its first iteration.
+
+Your observation was good; just don't say "it throws an error." An infinite loop normally just keeps executing until externally stopped.
+
+# for (int i = 1; i < n; i *= 2) {
+#   for (int j = 0; j < i; j++) {
+#       System.out.println(j);
+#   }
+# }
+
+You treated it as:
+
+log n × n
+
+That's the mistake.
+
+The inner loop depends on i.
+
+Let's trace it:
+
+i = 1  → inner runs 1 time
+i = 2  → inner runs 2 times
+i = 4  → inner runs 4 times
+i = 8  → inner runs 8 times
+...
+
+So total work is:
+
+1 + 2 + 4 + 8 + ... + n
+
+This is a geometric series, whose total is O(n), not O(n log n).
+
+Correct answer
+Time = O(n)
+Space = O(1)
+The rule you need to remember
+
+Don't automatically multiply:
+
+O(log n) × O(n)
+
+when the inner loop's bound depends on the outer loop.
+
+Instead ask:
+
+What values does the inner loop actually process during each outer iteration?
+
+Here:
+
+1 + 2 + 4 + 8 + ... + n = O(n)
+
+This is a very common interview complexity pattern.
+
+# for (int i = 0; i < n; i++) {
+#  int j = i;
+#   while (j > 0) {
+#       j /= 2;
+#   }
+# }
+
+You said:
+
+outer loop n, inner loop n/2
+The inner loop doesn't run n/2 times.
+
+For each particular i, j is repeatedly divided by 2.
+
+For example:
+
+i = 16
+
+16 → 8 → 4 → 2 → 1 → 0
+
+That's approximately:
+
+log₂(i)
+
+iterations.
+
+Therefore total work is:
+
+log(1) + log(2) + log(3) + ... + log(n)
+
+which is:
+
+O(n log n)
+
+So:
+
+Correct answer
+Time = O(n log n)
+Space = O(1)
+
+Your instinct that the outer loop contributes n was correct. The mistake was assuming the inner loop is n/2.
+
 ### Strongest pattern
 prefix sum
 valid parenthesis
