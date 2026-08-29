@@ -90,7 +90,9 @@ def calculate_statistics(nums,duplicate_numbers,highest_freq,mean_val):
     for n in nums:
         if n< mean_val:
             count_below_mean+=1
-    return number_above_median,high_freq_numbers,count_above_mean,count_below_mean
+
+    result={"number above median":number_above_median,"high frequency numbers":high_freq_numbers,"count above mean":count_above_mean,"count below mean":count_below_mean}
+    return result
 
 def cal(n):
     return n*n + 1
@@ -105,7 +107,7 @@ def calculate_basic_statistics(nums):
     statistics={"mean":mean,"median":median,"min":minimum,"max":maximum,"standard deviation":standard_deviation}
     return statistics
 
-def generate_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,number_above_median,max_count,min_count,__max__,__min__,unique_numbers,high_freq_numbers,count_above_mean,count_below_mean,duplicate_numbers_list):
+def generate_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,max_count,min_count,__max__,__min__,unique_numbers,duplicate_numbers_list,basic_calculation):
     print("Process success")
     print("Total numbers:", len(nums))
     print("\n=========Analysis Report=========")
@@ -120,22 +122,19 @@ def generate_report(nums,total_count,mean_val,greater_count,smaller_count,even_c
         print("calculated value:", cal(n))
 
     print("Standard Deviation:",np.std(nums))
-    print("numbers above median:",number_above_median)
     print("Max value freq:",max_count)
     print("min value freq:",min_count)
     print(sorted(nums))
     print(sorted(nums,reverse=True))
     print("range:",__max__-__min__)
     print("unique numbers are:",unique_numbers)
-    print(high_freq_numbers)
     print("total count:",total_count)
     print("largest value",__max__)
     print("smallest value",__min__)
-    print("percentage of count above mean:",(count_above_mean/len(nums))*100)
-    print("percentage of count_below_mean is:",(count_below_mean/len(nums))*100)
     print("duplicate numbers are:",duplicate_numbers_list if duplicate_numbers_list else "none")
+    print("basic calculations:",basic_calculation)
 
-def save_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,number_above_median,max_count,min_count,__max__,__min__,unique_numbers,high_freq_numbers,count_above_mean,count_below_mean,duplicate_numbers_list):
+def save_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,max_count,min_count,__max__,__min__,unique_numbers,duplicate_numbers_list,basic_calculation):
     with open("report.txt","w") as f:
         f.write("Process success\n")
         f.write("Total numbers: "+str(len(nums))+"\n")
@@ -151,20 +150,17 @@ def save_report(nums,total_count,mean_val,greater_count,smaller_count,even_count
             f.write("calculated value: "+str(cal(n))+"\n")
 
         f.write("Standard Deviation: "+str(np.std(nums))+"\n")
-        f.write("numbers above median: "+str(number_above_median)+"\n")
         f.write("Max value freq: "+str(max_count)+"\n")
         f.write("min value freq: "+str(min_count)+"\n")
         f.write(str(sorted(nums))+"\n")
         f.write(str(sorted(nums,reverse=True))+"\n")
         f.write("range: "+str(__max__-__min__)+"\n")
         f.write("unique numbers are: "+str(unique_numbers)+"\n")
-        f.write(str(high_freq_numbers)+"\n")
         f.write("total count: "+str(total_count)+"\n")
         f.write("largest value"+str(__max__)+"\n")
         f.write("smallest value"+str(__min__)+"\n")
-        f.write("percentage of count above mean:"+ str((count_above_mean/len(nums))*100)+"\n")
-        f.write("percentage of count_below_mean is:"+ str((count_below_mean/len(nums))*100)+"\n")
         f.write("duplicate numbers are:"+ str(duplicate_numbers_list if duplicate_numbers_list else "none")+"\n")
+        f.write("basic calculations:"+str(basic_calculation))
 
 def main():    
 
@@ -189,8 +185,8 @@ def main():
             min_count+=1
     duplicate_numbers_list,highest_freq,duplicate_numbers=find_duplicates(nums)
     even_count,odd_count,total_count,greater_count,smaller_count=find_odd_even(nums,mean_val)
-    number_above_median,high_freq_numbers,count_above_mean,count_below_mean=calculate_statistics(nums,duplicate_numbers,highest_freq,mean_val)
-    generate_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,number_above_median,max_count,min_count,__max__,__min__,unique_numbers,high_freq_numbers,count_above_mean,count_below_mean,duplicate_numbers_list)
-    save_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,number_above_median,max_count,min_count,__max__,__min__,unique_numbers,high_freq_numbers,count_above_mean,count_below_mean,duplicate_numbers_list)
+    basic_calculation=calculate_statistics(nums,duplicate_numbers,highest_freq,mean_val)
+    generate_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,max_count,min_count,__max__,__min__,unique_numbers,duplicate_numbers_list,basic_calculation)
+    save_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,max_count,min_count,__max__,__min__,unique_numbers,duplicate_numbers_list,basic_calculation)
 if __name__=='__main__':
     main()

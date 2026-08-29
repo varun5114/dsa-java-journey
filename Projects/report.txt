@@ -19,17 +19,14 @@ calculated value: 50.0
 calculated value: 65.0
 calculated value: 82.0
 Standard Deviation: 2.581988897471611
-numbers above median: [6.0, 7.0, 8.0, 9.0]
 Max value freq: 1
 min value freq: 1
 [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]
 [9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0]
 range: 8.0
 unique numbers are: {1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0}
-[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]
 total count: 9
 largest value9.0
 smallest value1.0
-percentage of count above mean:44.44444444444444
-percentage of count_below_mean is:44.44444444444444
 duplicate numbers are:none
+basic calculations:{'number above median': [6.0, 7.0, 8.0, 9.0], 'high frequency numbers': [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0], 'count above mean': 4, 'count below mean': 4}
