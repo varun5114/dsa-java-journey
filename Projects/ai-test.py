@@ -95,7 +95,7 @@ def calculate_statistics(nums,duplicate_numbers,highest_freq,mean_val):
     return result
 
 def cal(n):
-    return n*n + 1
+    return n*n+1
 
 def calculate_basic_statistics(nums):
     mean=np.mean(nums)
