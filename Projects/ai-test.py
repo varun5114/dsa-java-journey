@@ -69,7 +69,7 @@ def find_odd_even(nums,mean_val):
         else: odd_count+=1
     return even_count,odd_count,total_count,greater_count,smaller_count
 
-def calculate_statistics(nums,duplicate_numbers,highest_freq,mean_val):
+def calculate_advanced_statistics(nums,duplicate_numbers,highest_freq,mean_val):
     number_above_median=[]
     median_value=np.median(nums)
     for n in nums:
@@ -103,11 +103,13 @@ def calculate_basic_statistics(nums):
     minimum=np.min(nums)
     maximum=np.max(nums)
     standard_deviation=np.std(nums)
+    data_range=maximum-minimum
+    unique_count=len(set(nums))
 
-    statistics={"mean":mean,"median":median,"min":minimum,"max":maximum,"standard deviation":standard_deviation}
+    statistics={"mean":mean,"median":median,"min":minimum,"max":maximum,"standard deviation":standard_deviation,"range":data_range,"unique numbers":unique_count}
     return statistics
 
-def generate_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,max_count,min_count,__max__,__min__,unique_numbers,duplicate_numbers_list,basic_calculation):
+def generate_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,max_count,min_count,__max__,__min__,unique_numbers,duplicate_numbers_list,advanced_statistics,basic_statistics):
     print("Process success")
     print("Total numbers:", len(nums))
     print("\n=========Analysis Report=========")
@@ -134,7 +136,7 @@ def generate_report(nums,total_count,mean_val,greater_count,smaller_count,even_c
     print("duplicate numbers are:",duplicate_numbers_list if duplicate_numbers_list else "none")
     print("basic calculations:",basic_calculation)
 
-def save_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,max_count,min_count,__max__,__min__,unique_numbers,duplicate_numbers_list,basic_calculation):
+def save_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,max_count,min_count,__max__,__min__,unique_numbers,duplicate_numbers_list,advanced_statistics,basic_statistics):
     with open("report.txt","w") as f:
         f.write("Process success\n")
         f.write("Total numbers: "+str(len(nums))+"\n")
@@ -163,19 +165,16 @@ def save_report(nums,total_count,mean_val,greater_count,smaller_count,even_count
         f.write("basic calculations:"+str(basic_calculation))
 
 def main():    
-
-    unique_numbers=set()
     max_count=0
     min_count=0
 
     nums = read_file()
     if not nums:
         return
-    statistics=calculate_basic_statistics(nums)
-    mean_val = np.mean(nums)
+    unique_numbers=set(nums)
+    basic_statistics=calculate_basic_statistics(nums)
+    mean_val = basic_statistics["mean"]
     
-    for n in nums:
-        unique_numbers.add(n)
 
     __max__,__min__=find_max_min(nums)
     for n in nums:
@@ -185,8 +184,9 @@ def main():
             min_count+=1
     duplicate_numbers_list,highest_freq,duplicate_numbers=find_duplicates(nums)
     even_count,odd_count,total_count,greater_count,smaller_count=find_odd_even(nums,mean_val)
-    basic_calculation=calculate_statistics(nums,duplicate_numbers,highest_freq,mean_val)
-    generate_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,max_count,min_count,__max__,__min__,unique_numbers,duplicate_numbers_list,basic_calculation)
-    save_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,max_count,min_count,__max__,__min__,unique_numbers,duplicate_numbers_list,basic_calculation)
+    advanced_statistics=calculate_advanced_statistics(nums,duplicate_numbers,highest_freq,mean_val)
+    advanced_statistics["duplicate numbers"]=duplicate_numbers_list
+    generate_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,max_count,min_count,__max__,__min__,unique_numbers,duplicate_numbers_list,advanced_statistics,basic_statistics)
+    save_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,max_count,min_count,__max__,__min__,unique_numbers,duplicate_numbers_list,advanced_statistics,basic_statistics)
 if __name__=='__main__':
     main()
