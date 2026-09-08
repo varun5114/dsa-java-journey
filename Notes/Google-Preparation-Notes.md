@@ -1377,11 +1377,17 @@ Your instinct that the outer loop contributes n was correct. The mistake was ass
 prefix sum
 valid parenthesis
 two sum
+3sum 
+basic level problems
+
+
 
 ### weakest pattern
-prefix sum
-trees
-recursion
+
+trees 
+linked lists
+node type problems
+transfer learning problems
 
 # common mistakes made
 
