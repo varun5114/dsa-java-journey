@@ -1373,6 +1373,20 @@ Space = O(1)
 
 Your instinct that the outer loop contributes n was correct. The mistake was assuming the inner loop is n/2.
 
+
+## int sum = 0;
+
+→ Auxiliary space: O(1)
+
+## int[] prefix = new int[n];
+
+→ Auxiliary space: O(n)
+
+## HashMap<Integer, Integer> map
+
+→ Potential auxiliary space: O(n)
+
+
 ### Strongest pattern
 prefix sum
 valid parenthesis
