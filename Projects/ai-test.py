@@ -55,6 +55,7 @@ def find_max_min(nums):
 def find_odd_even(nums,mean_val):
     greater_count = 0
     smaller_count = 0
+    equal_count = 0
     even_count=0
     odd_count=0
     total_count=0
@@ -62,12 +63,14 @@ def find_odd_even(nums,mean_val):
         total_count+=1
         if mean_val < i:
             greater_count += 1
-        elif mean_val > i:
-            smaller_count += 1
+        elif mean_val==i:
+            equal_count += 1
+        else :
+            smaller_count+=1
         if i%2==0:
             even_count+=1
         else: odd_count+=1
-    return even_count,odd_count,total_count,greater_count,smaller_count
+    return even_count,odd_count,total_count,greater_count,smaller_count,equal_count
 
 def calculate_advanced_statistics(nums,duplicate_numbers,highest_freq,mean_val):
     number_above_median=[]
@@ -109,7 +112,7 @@ def calculate_basic_statistics(nums):
     statistics={"mean":mean,"median":median,"min":minimum,"max":maximum,"standard deviation":standard_deviation,"range":data_range,"unique numbers":unique_count}
     return statistics
 
-def generate_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,max_count,min_count,__max__,__min__,unique_numbers,duplicate_numbers_list,advanced_statistics,basic_statistics):
+def generate_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,max_count,min_count,__max__,__min__,unique_numbers,duplicate_numbers_list,advanced_statistics,basic_statistics,equal_count):
     print("Process success")
     print("Total numbers:", len(nums))
     print("\n=========Analysis Report=========")
@@ -118,6 +121,7 @@ def generate_report(nums,total_count,mean_val,greater_count,smaller_count,even_c
     print("min:", np.min(nums))
     print("greater_count:", greater_count)
     print("smaller_count:", smaller_count)
+    print("equal count:", equal_count)
     print("Even count: ",even_count)
     print("odd_count: ",odd_count)
     for n in nums:
@@ -134,9 +138,9 @@ def generate_report(nums,total_count,mean_val,greater_count,smaller_count,even_c
     print("largest value",__max__)
     print("smallest value",__min__)
     print("duplicate numbers are:",duplicate_numbers_list if duplicate_numbers_list else "none")
-    print("basic calculations:",basic_calculation)
+    print("basic calculations:",basic_statistics)
 
-def save_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,max_count,min_count,__max__,__min__,unique_numbers,duplicate_numbers_list,advanced_statistics,basic_statistics):
+def save_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,max_count,min_count,__max__,__min__,unique_numbers,duplicate_numbers_list,advanced_statistics,basic_statistics,equal_count):
     with open("report.txt","w") as f:
         f.write("Process success\n")
         f.write("Total numbers: "+str(len(nums))+"\n")
@@ -146,6 +150,7 @@ def save_report(nums,total_count,mean_val,greater_count,smaller_count,even_count
         f.write("min: "+str(np.min(nums))+"\n")
         f.write("greater_count: "+str(greater_count)+"\n")
         f.write("smaller_count: "+str(smaller_count)+"\n")
+        print("equal count:"+str(equal_count)+"\n")
         f.write("Even count: "+str(even_count)+"\n")
         f.write("odd_count: "+str(odd_count)+"\n")
         for n in nums:
@@ -162,7 +167,7 @@ def save_report(nums,total_count,mean_val,greater_count,smaller_count,even_count
         f.write("largest value"+str(__max__)+"\n")
         f.write("smallest value"+str(__min__)+"\n")
         f.write("duplicate numbers are:"+ str(duplicate_numbers_list if duplicate_numbers_list else "none")+"\n")
-        f.write("basic calculations:"+str(basic_calculation))
+        f.write("basic calculations:"+str(basic_statistics)+"\n")
 
 def main():    
     max_count=0
@@ -183,10 +188,10 @@ def main():
         elif(n==__min__):
             min_count+=1
     duplicate_numbers_list,highest_freq,duplicate_numbers=find_duplicates(nums)
-    even_count,odd_count,total_count,greater_count,smaller_count=find_odd_even(nums,mean_val)
+    even_count,odd_count,total_count,greater_count,smaller_count,equal_count=find_odd_even(nums,mean_val)
     advanced_statistics=calculate_advanced_statistics(nums,duplicate_numbers,highest_freq,mean_val)
     advanced_statistics["duplicate numbers"]=duplicate_numbers_list
-    generate_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,max_count,min_count,__max__,__min__,unique_numbers,duplicate_numbers_list,advanced_statistics,basic_statistics)
-    save_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,max_count,min_count,__max__,__min__,unique_numbers,duplicate_numbers_list,advanced_statistics,basic_statistics)
+    generate_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,max_count,min_count,__max__,__min__,unique_numbers,duplicate_numbers_list,advanced_statistics,basic_statistics,equal_count)
+    save_report(nums,total_count,mean_val,greater_count,smaller_count,even_count,odd_count,max_count,min_count,__max__,__min__,unique_numbers,duplicate_numbers_list,advanced_statistics,basic_statistics,equal_count)
 if __name__=='__main__':
     main()

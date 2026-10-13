@@ -29,4 +29,4 @@ total count: 9
 largest value9.0
 smallest value1.0
 duplicate numbers are:none
-basic calculations:{'number above median': [6.0, 7.0, 8.0, 9.0], 'high frequency numbers': [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0], 'count above mean': 4, 'count below mean': 4}
+basic calculations:{'mean': np.float64(5.0), 'median': np.float64(5.0), 'min': np.float64(1.0), 'max': np.float64(9.0), 'standard deviation': np.float64(2.581988897471611), 'range': np.float64(8.0), 'unique numbers': 9}
