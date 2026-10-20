@@ -1,3 +1,4 @@
+import sys
 import numpy as np
 def validate_numbers(numbers):
     if not numbers:
@@ -17,15 +18,18 @@ def parse_numbers(line):
     return numbers
     
 
-def read_file():
+def read_file(file_path="numbers.txt"):
     numbers=[]
     try:
-        with open("numbers.txt","r") as f:
+        with open(file_path,"r",encoding="utf-8") as f:
             for line in f:
                 elements=parse_numbers(line)
                 numbers.extend(elements)          
     except FileNotFoundError:
-        print("File not found. Please create the file")
+        print(f"File not found. Please create the file:{file_path}")
+        return[]
+    except PermissionError:
+        print(f"permission denied when reading:{file_path}")
         return[]
 
     numbers=validate_numbers(numbers)
@@ -173,7 +177,8 @@ def main():
     max_count=0
     min_count=0
 
-    nums = read_file()
+    file_path=sys.argv[1] if len(sys.argv) >1 else "numbers.txt"
+    nums = read_file(file_path)
     if not nums:
         return
     unique_numbers=set(nums)
