@@ -10,7 +10,7 @@ def validate_numbers(numbers):
 
 def parse_numbers(line):
     numbers=[]
-    for value in line.split():
+    for value in line.replace(","," ").split():
         try:
             numbers.append(float(value))
         except ValueError:
